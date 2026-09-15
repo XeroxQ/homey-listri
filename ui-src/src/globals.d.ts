@@ -17,6 +17,8 @@ declare namespace Homey {
 
     export function hideLoadingOverlay(): void;
     export function showLoadingOverlay(): void;
+    
+    export function hapticFeedback(): void;
 
     export function getDeviceIds(): string;
 

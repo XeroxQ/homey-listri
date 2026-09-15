@@ -1,120 +1,132 @@
 {
-    "name": {
-        "en": "List",
-        "nl": "Lijst",
-        "de": "Liste",
-        "fr": "Liste",
-        "it": "Elenco",
-        "sv": "Lista",
-        "no": "Liste",
-        "es": "Lista",
-        "da": "Liste",
-        "ru": "Список",
-        "pl": "Lista",
-        "ko": "목록",
-        "ar": "قائمة"
+  "name": {
+    "en": "List",
+    "nl": "Lijst",
+    "de": "Liste",
+    "fr": "Liste",
+    "it": "Elenco",
+    "sv": "Lista",
+    "no": "Liste",
+    "es": "Lista",
+    "da": "Liste",
+    "ru": "Список",
+    "pl": "Lista",
+    "ko": "목록",
+    "ar": "قائمة"
+  },
+  "height": 120,
+  "devices": {
+    "type": "app",
+    "singular": true,
+    "filter": {}
+  },
+  "settings": [
+    {
+      "id": "dynamicHeight",
+      "type": "checkbox",
+      "label": {
+        "en": "Dynamic height",
+        "nl": "Dynamische hoogte",
+        "de": "Dynamische Höhe",
+        "fr": "Hauteur dynamique",
+        "it": "Altezza dinamica",
+        "sv": "Dynamisk höjd",
+        "no": "Dynamisk høyde",
+        "es": "Altura dinámica",
+        "da": "Dynamisk højde",
+        "ru": "Динамическая высота",
+        "pl": "Dynamiczna wysokość",
+        "ko": "동적 높이",
+        "ar": "ارتفاع ديناميكي"
+      },
+      "value": true
     },
-    "height": 120,
-    "devices": {
-        "type": "app",
-        "singular": true,
-        "filter": {}
+    {
+      "id": "dynamicHeightWhileEditing",
+      "type": "checkbox",
+      "label": {
+        "en": "Dynamic height while editing items",
+        "nl": "Dynamische hoogte tijdens het bewerken van items",
+        "da": "Dynamisk højde, mens du redigerer elementer",
+        "de": "Dynamische Höhe beim Bearbeiten von Elementen",
+        "es": "Altura dinámica al editar elementos",
+        "fr": "Hauteur dynamique lors de la modification des éléments",
+        "it": "Altezza dinamica durante la modifica degli elementi",
+        "no": "Dynamisk høyde mens du redigerer elementer",
+        "sv": "Dynamisk höjd vid redigering av objekt",
+        "pl": "Dynamiczna wysokość podczas edytowania elementów",
+        "ru": "Динамическая высота при редактировании элементов",
+        "ko": "항목 편집 시 동적 높이",
+        "ar": "ارتفاع ديناميكي أثناء تحرير العناصر"
+      },
+      "value": true
     },
-    "settings": [
-        {
-            "id": "dynamicHeight",
-            "type": "checkbox",
-            "label": {
-                "en": "Dynamic height",
-                "nl": "Dynamische hoogte",
-                "de": "Dynamische Höhe",
-                "fr": "Hauteur dynamique",
-                "it": "Altezza dinamica",
-                "sv": "Dynamisk höjd",
-                "no": "Dynamisk høyde",
-                "es": "Altura dinámica",
-                "da": "Dynamisk højde",
-                "ru": "Динамическая высота",
-                "pl": "Dynamiczna wysokość",
-                "ko": "동적 높이",
-                "ar": "ارتفاع ديناميكي"
-            },
-            "value": true
-        },
-        {
-            "id": "dynamicHeightEditing",
-            "type": "checkbox",
-            "label": {
-                "en": "Dynamic height while editing items"
-            },
-            "value": true
-        },
-        {
-            "id": "fixedHeight",
-            "type": "number",
-            "label": {
-                "en": "Fixed height",
-                "nl": "Vaste hoogte",
-                "de": "Feste Höhe",
-                "fr": "Hauteur fixe",
-                "it": "Altezza fissa",
-                "sv": "Fast höjd",
-                "no": "Fast høyde",
-                "es": "Altura fija",
-                "da": "Fast højde",
-                "ru": "Фиксированная высота",
-                "pl": "Stała wysokość",
-                "ko": "고정 높이",
-                "ar": "ارتفاع ثابت"
-            },
-            "value": 400,
-            "min": 120
-        }
-    ],
-    "api": {
-        "addItem": {
-            "method": "POST",
-            "path": "/:deviceId/items"
-        },
-        "get": {
-            "method": "GET",
-            "path": "/:deviceId"
-        },
-        "getCategories": {
-            "method": "GET",
-            "path": "/:deviceId/categories"
-        },
-        "getItem": {
-            "method": "GET",
-            "path": "/:deviceId/items/:id"
-        },
-        "getItems": {
-            "method": "GET",
-            "path": "/:deviceId/items"
-        },
-        "getPersons": {
-            "method": "GET",
-            "path": "/:deviceId/persons"
-        },
-        "editItem": {
-            "method": "POST",
-            "path": "/:deviceId/items/:id"
-        },
-        "markChecked": {
-            "method": "POST",
-            "path": "/:deviceId/items/:id/checked"
-        },
-        "markUnchecked": {
-            "method": "POST",
-            "path": "/:deviceId/items/:id/unchecked"
-        },
-        "removeItem": {
-            "method": "DELETE",
-            "path": "/:deviceId/items/:id"
-        },
-        "updateQuantity": {
-            "method": "POST",
-            "path": "/:deviceId/items/:id/quantity"
-        }
+    {
+      "id": "fixedHeight",
+      "type": "number",
+      "label": {
+        "en": "Fixed height",
+        "nl": "Vaste hoogte",
+        "de": "Feste Höhe",
+        "fr": "Hauteur fixe",
+        "it": "Altezza fissa",
+        "sv": "Fast höjd",
+        "no": "Fast høyde",
+        "es": "Altura fija",
+        "da": "Fast højde",
+        "ru": "Фиксированная высота",
+        "pl": "Stała wysokość",
+        "ko": "고정 높이",
+        "ar": "ارتفاع ثابت"
+      },
+      "value": 400,
+      "min": 120
     }
+  ],
+  "api": {
+    "addItem": {
+      "method": "POST",
+      "path": "/:deviceId/items"
+    },
+    "get": {
+      "method": "GET",
+      "path": "/:deviceId"
+    },
+    "getCategories": {
+      "method": "GET",
+      "path": "/:deviceId/categories"
+    },
+    "getItem": {
+      "method": "GET",
+      "path": "/:deviceId/items/:id"
+    },
+    "getItems": {
+      "method": "GET",
+      "path": "/:deviceId/items"
+    },
+    "getPersons": {
+      "method": "GET",
+      "path": "/:deviceId/persons"
+    },
+    "editItem": {
+      "method": "POST",
+      "path": "/:deviceId/items/:id"
+    },
+    "markChecked": {
+      "method": "POST",
+      "path": "/:deviceId/items/:id/checked"
+    },
+    "markUnchecked": {
+      "method": "POST",
+      "path": "/:deviceId/items/:id/unchecked"
+    },
+    "removeItem": {
+      "method": "DELETE",
+      "path": "/:deviceId/items/:id"
+    },
+    "updateQuantity": {
+      "method": "POST",
+      "path": "/:deviceId/items/:id/quantity"
+    }
+  }
 }

@@ -97,10 +97,12 @@
     const {
         deviceId,
         dynamicHeight,
+        dynamicHeightWhileEditing,
         fixedHeight
     } = defineProps<{
         readonly deviceId: string;
         readonly dynamicHeight: boolean;
+        readonly dynamicHeightWhileEditing: boolean;
         readonly fixedHeight: number;
     }>();
 
@@ -148,6 +150,7 @@
             case 'product':
             case 'task':
                 await changeChecked(deviceId, item, !item.checked);
+                Homey.hapticFeedback();
                 break;
 
             default:
@@ -156,7 +159,7 @@
     }
 
     async function updateHeight(): Promise<void> {
-        if (!dynamicHeight) {
+        if (!dynamicHeight && (!dynamicHeightWhileEditing || (!addingType && !editingItem))) {
             Homey.setHeight(Math.max(120, fixedHeight));
             return;
         }

@@ -4,6 +4,7 @@
             v-if="ready"
             :device-id="deviceId!"
             :dynamic-height="dynamicHeight"
+            :dynamic-height-while-editing="dynamicHeightWhileEditing"
             :fixed-height="fixedHeight"/>
     </FluxRoot>
 </template>
@@ -17,6 +18,7 @@
 
     const deviceId = ref<string | null>(null);
     const dynamicHeight = ref(true);
+    const dynamicHeightWhileEditing = ref(true);
     const fixedHeight = ref(400);
     const ready = ref(false);
 
@@ -26,6 +28,7 @@
 
         deviceId.value = deviceIds[0] ?? null;
         dynamicHeight.value = settings.dynamicHeight as boolean ?? true;
+        dynamicHeightWhileEditing.value = settings.dynamicHeightWhileEditing as boolean ?? true;
         fixedHeight.value = settings.fixedHeight as number ?? 400;
         ready.value = true;
 
