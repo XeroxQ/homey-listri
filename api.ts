@@ -63,6 +63,10 @@ export async function clearList({homey: {app}, params}: ApiRequest<ListriApp, ne
     return await lists.clearList(app, params.deviceId);
 }
 
+export async function log({homey: {app}, body}: ApiRequest<ListriApp, LogBody, never>): Promise<void> {
+    app.log(body.message);
+}
+
 type DeviceParams = {
     readonly deviceId: string;
 };
@@ -74,4 +78,8 @@ type ItemParams = {
 
 type QuantityBody = {
     readonly quantity: number;
+};
+
+type LogBody = {
+    readonly message: string;
 };

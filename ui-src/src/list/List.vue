@@ -119,7 +119,8 @@
         loadItems,
         loadLook,
         removeItem,
-        setItems
+        setItems,
+        log
     } = useStore();
 
     const addingType = ref<ListItemTypeField | null>(null);
@@ -149,8 +150,8 @@
         switch (item.type) {
             case 'product':
             case 'task':
+                Homey.hapticFeedback(); // Doesn't do anything yet? It is documented.
                 await changeChecked(deviceId, item, !item.checked);
-                Homey.hapticFeedback();
                 break;
 
             default:
@@ -159,6 +160,7 @@
     }
 
     async function updateHeight(): Promise<void> {
+        log('dynamicHeightWhileEditing: ' + dynamicHeightWhileEditing);
         if (!dynamicHeight && (!dynamicHeightWhileEditing || (!addingType && !editingItem))) {
             Homey.setHeight(Math.max(120, fixedHeight));
             return;

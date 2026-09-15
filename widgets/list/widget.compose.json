@@ -127,6 +127,10 @@
     "updateQuantity": {
       "method": "POST",
       "path": "/:deviceId/items/:id/quantity"
+    },
+    "log": {
+      "method": "POST",
+      "path": "/log"
     }
   }
 }
