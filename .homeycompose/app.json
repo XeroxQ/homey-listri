@@ -214,6 +214,10 @@
     "clearList": {
       "method": "POST",
       "path": "/lists/:deviceId/clear"
+    },
+    "log": {
+      "method": "POST",
+      "path": "/log"
     }
   }
 }
