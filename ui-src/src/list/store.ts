@@ -41,9 +41,6 @@ export default defineStore('list', () => {
             await Homey.api('POST', `/${deviceId}/items/${item.id}/unchecked`);
         }
     }
-    async function log(message:string): Promise<void> {        
-        await Homey.api('POST', `/log`, {message});
-    }
 
     async function changeQuantity(deviceId: string, item: ProductListItemType, change: 'decrease' | 'increase'): Promise<void> {
         const index = unref(items).findIndex(i => i.id === item.id);
@@ -103,6 +100,10 @@ export default defineStore('list', () => {
 
     async function setItems(newItems: ListItemType[]): Promise<void> {
         items.value = newItems;
+    }
+    
+    async function log(message:string): Promise<void> {        
+        await Homey.api('POST', `/log`, {message});
     }
 
     return {
