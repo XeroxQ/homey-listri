@@ -127,7 +127,7 @@
     const editingItem = ref<ListItemType | null>(null);
 
     async function onAddTap(): Promise<void> {
-        log('onAddTap');
+        //log('onAddTap');
         await Homey.api('POST', `/log`, {message: 'onAddTap API'});
         switch (unref(look)?.type) {
             case 'grocery_list':
