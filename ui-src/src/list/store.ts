@@ -101,8 +101,8 @@ export default defineStore('list', () => {
     async function setItems(newItems: ListItemType[]): Promise<void> {
         items.value = newItems;
     }
-    
-    async function log(message:string): Promise<void> {        
+
+    async function log(message:string): Promise<void> {
         await Homey.api('POST', `/log`, {message});
     }
 
