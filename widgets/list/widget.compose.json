@@ -42,6 +42,14 @@
             "value": true
         },
         {
+            "id": "dynamicHeightEditing",
+            "type": "checkbox",
+            "label": {
+                "en": "Dynamic height while editing items"
+            },
+            "value": true
+        },
+        {
             "id": "fixedHeight",
             "type": "number",
             "label": {

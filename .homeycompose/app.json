@@ -1,6 +1,6 @@
 {
   "id": "com.basmilius.listri",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "compatibility": ">=12.4.0",
   "sdk": 3,
   "brandColor": "#57534e",
@@ -149,6 +149,14 @@
         "username": "basmilius"
       }
     }
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Arie J. Godschalk",
+        "email": "arie@qluster-it.nl"
+      }
+    ]
   },
   "api": {
     "getLists": {

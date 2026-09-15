@@ -138,6 +138,9 @@
 
             emit('longPress');
         }, longPressDuration);
+        
+        console.log('onTouchStart: evt.preventDefault();');
+        evt.preventDefault();
     }
 
     function onTouchMove(evt: TouchEvent): void {

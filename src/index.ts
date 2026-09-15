@@ -12,6 +12,16 @@ export default class ListriApp extends App<ListriApp> {
 
     async onInit() {
         try {
+            if (process.env.DEBUG === '1') {
+                try {
+                    require('inspector').open(9235, '0.0.0.0', true);
+                } catch (error) {
+                    try {
+                        require('inspector').waitForDebugger();
+                    } catch (error) { }
+                }
+            }
+
             this.#api = await HomeyAPI.createAppAPI({
                 homey: this.homey
             });
