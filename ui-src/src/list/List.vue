@@ -127,6 +127,7 @@
     const editingItem = ref<ListItemType | null>(null);
 
     async function onAddTap(): Promise<void> {
+        log('onAddTap');
         switch (unref(look)?.type) {
             case 'grocery_list':
                 addingType.value = 'product';

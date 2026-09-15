@@ -42,7 +42,7 @@ export default defineStore('list', () => {
         }
     }
     async function log(message:string): Promise<void> {        
-        await Homey.api('POST', `/log`, {message});        
+        await Homey.api('POST', `/log`, {message});
     }
 
     async function changeQuantity(deviceId: string, item: ProductListItemType, change: 'decrease' | 'increase'): Promise<void> {

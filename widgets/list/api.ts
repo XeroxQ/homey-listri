@@ -48,6 +48,10 @@ export async function updateQuantity({homey: {app}, params, body}: WidgetApiRequ
     await lists.changeQuantity(app, params.deviceId, params.id, body.quantity);
 }
 
+export async function log({homey: {app}, body}: WidgetApiRequest<ListriApp, LogBody, never>): Promise<void> {
+    app.log(body.message);
+}
+
 type DeviceParams = {
     readonly deviceId: string;
 };
@@ -59,4 +63,8 @@ type ItemParams = {
 
 type QuantityBody = {
     readonly quantity: number;
+};
+
+type LogBody = {
+    readonly message: string;
 };
