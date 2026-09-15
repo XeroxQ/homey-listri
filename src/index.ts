@@ -21,7 +21,7 @@ export default class ListriApp extends App<ListriApp> {
                     } catch (error) { }
                 }
             }
-
+                        
             this.#api = await HomeyAPI.createAppAPI({
                 homey: this.homey
             });
