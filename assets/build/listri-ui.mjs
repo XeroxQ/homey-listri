@@ -14192,7 +14192,7 @@ var R6 = /* @__PURE__ */ He(B6, [["__cssModules", _6]]), P6 = /* @__PURE__ */ W(
       }
     }
     async function I() {
-      if (!t.dynamicHeight && (!t.dynamicHeightWhileEditing || !w.value && !k.value)) {
+      if (!t.dynamicHeight && (!t.dynamicHeightWhileEditing || !c(w) && !c(k))) {
         Homey.setHeight(Math.max(120, t.fixedHeight));
         return;
       }

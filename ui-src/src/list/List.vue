@@ -62,12 +62,14 @@
     <FluxOverlay>
         <ListAdd
             v-if="addingType"
+            id="addingType"
             :device-id="deviceId"
             :type="addingType"
             @close="addingType = null"/>
 
         <ListEdit
             v-else-if="editingItem"
+            id="editingItem"
             :device-id="deviceId"
             :item="editingItem"
             @close="editingItem = null"/>
@@ -169,8 +171,17 @@
 
         const list = document.querySelector('#app')!;
         const {height} = list.getBoundingClientRect();
+
+        
+        const listAdd = document.querySelector('#addingType')!;
+        const {height: heightlistAdd } = listAdd.getBoundingClientRect();
+
+        const listEdit = document.querySelector('#editingItem')!;
+        const {height: heighteditingItem} = listEdit.getBoundingClientRect();
         
         log('height: ' + height);
+        log('heightlistAdd: ' + heightlistAdd);
+        log('heighteditingItem: ' + heighteditingItem);
         Homey.setHeight(unref(addingType) || unref(editingItem) ? Math.max(420, height) : height);
     }
 
