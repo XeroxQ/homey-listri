@@ -14,12 +14,18 @@
     lang="ts"
     setup>
     import { type Component, onUnmounted, ref, unref } from 'vue';
+    import useStore from './../list/store';    
+    const { log } = useStore();
 
+    log('ScrollContainer');
     const {
         tag = 'div'
     } = defineProps<{
         readonly tag: Component | string;
     }>();
+
+    
+
 
     const containerRef = ref<HTMLDivElement | null>(null);
     const isDragging = ref(false);
@@ -144,6 +150,7 @@
     }
 
     function onTouchStart(evt: TouchEvent): void {
+        log('ScrollContainer onTouchStart');
         stopMomentum();
 
         const container = unref(containerRef);
@@ -172,6 +179,7 @@
     }
 
     function onTouchMove(evt: TouchEvent): void {
+        log('ScrollContainer onTouchMove');
         if (!unref(isDragging)) {
             return;
         }
@@ -203,6 +211,9 @@
         const maxScroll = container.scrollHeight - container.clientHeight;
         const targetScroll = unref(initialScrollTop) + deltaY;
         const dimension = container.clientHeight;
+
+        
+        log('ScrollContainer onTouchMove targetScroll: ' + targetScroll);
 
         if (targetScroll < 0) {
             container.scrollTop = 0;

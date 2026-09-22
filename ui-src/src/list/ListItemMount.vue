@@ -12,6 +12,7 @@
 
         <div
             :class="$style.listItemMountBody"
+            @pointermove="onPointerMove"
             @touchstart="onTouchStart"
             @touchmove="onTouchMove"
             @touchend="onTouchEnd"
@@ -36,8 +37,8 @@
     setup>
     import { computed, ref, unref, type VNode, watch } from 'vue';
     import { Icon } from '../components';
+    
     import useStore from './store';
-
     const { log } = useStore();
     
     const emit = defineEmits<{
@@ -68,6 +69,32 @@
     const longPressTimer = ref<ReturnType<typeof setTimeout> | null>(null);
     const didLongPress = ref(false);
 
+    //const list = document.querySelector('#app')!;
+    //log('list: ' + list.parentElement?.parentElement?.parentElement?.tagName);
+
+    // // BODY 
+    // if(list.parentElement)list.parentElement.ontouchmove = function(evt) {
+    //     try {
+    //         log('BODY ontouchmove');
+    //         // evt.preventDefault();
+    //         // evt.stopPropagation();
+    //         // evt.stopImmediatePropagation();
+    //     } catch (ex:any) {
+    //         log('BODY ex: ' + ex.message);
+    //     }
+    // }
+
+    // // BODY 
+    // if(list.parentElement)list.parentElement.ontouchstart = function(evt) {
+    //     try {
+    //         log('BODY ontouchstart');
+    //         // evt.preventDefault();
+    //         // evt.stopPropagation();
+    //         // evt.stopImmediatePropagation();
+    //     } catch (ex:any) {
+    //         log('BODY ex: ' + ex.message);
+    //     }
+    // }
     const isDestructive = computed(() => {
         if (!isDragging.value) {
             return false;
@@ -114,6 +141,18 @@
     }
 
     function onTouchStart(evt: TouchEvent): void {
+        let element = evt.target as HTMLElement | null;
+
+        while(element) {
+            log('ELEMENT:');
+            log(element.tagName);
+            log(element.clientHeight.toString());
+            log(element.scrollHeight.toString());
+            log(element.className);
+            element = element.parentElement;
+        }
+
+        log('onTouchStart');
         if (unref(isOpen)) {
             return;
         }
@@ -142,13 +181,13 @@
             emit('longPress');
         }, longPressDuration);
         
-        log('onTouchStart: evt.preventDefault();');
-        try {
-            evt.preventDefault();
-            evt.stopPropagation();
-        } catch (ex:any) {
-            log (ex.message);
-        }
+        // log('onTouchStart: evt.preventDefault();');
+        // try {
+        //     evt.preventDefault();
+        //     evt.stopPropagation();
+        // } catch (ex:any) {
+        //     log (ex.message);
+        // }
     }
 
     function onTouchMove(evt: TouchEvent): void {
@@ -172,21 +211,59 @@
         if (unref(direction) === null && (deltaX > 4 || deltaY > 4)) {
             direction.value = deltaX > deltaY ? 'horizontal' : 'vertical';
         }
-
+        
         if (unref(direction) === 'horizontal' && evt.cancelable) {
+            log('onTouchMove horizontal preventDefault()');
             evt.preventDefault();
         }
         
-        log('onTouchMove: evt.preventDefault();');
-        try {
-            evt.preventDefault();
-            evt.stopPropagation();
-        } catch (ex:any) {
-            log (ex.message);
+        // log('onTouchMove: evt.preventDefault();');
+        // try {
+        //     evt.preventDefault();
+        //     evt.stopPropagation();
+        // } catch (ex:any) {
+        //     log (ex.message);
+        // }
+    }
+
+    function onPointerMove(evt: PointerEvent): void {
+        log('onPointerMove');
+        if (!unref(isDragging)) {
+            return;
         }
+
+        //const touch = evt..[0]!;
+        currentX.value = evt.clientX;
+        currentY.value = evt.clientY;
+
+        const deltaX = Math.abs(currentX.value - startX.value);
+        const deltaY = Math.abs(currentY.value - startY.value);
+
+        if (deltaX > 10 || deltaY > 10) {
+            isTap.value = false;
+            clearLongPressTimer();
+        }
+
+        if (unref(direction) === null && (deltaX > 4 || deltaY > 4)) {
+            direction.value = deltaX > deltaY ? 'horizontal' : 'vertical';
+        }
+        
+        if (unref(direction) === 'horizontal' && evt.cancelable) {
+            log('onPointerMove horizontal preventDefault()');
+            evt.preventDefault();
+        }
+        
+        // log('onTouchMove: evt.preventDefault();');
+        // try {
+        //     evt.preventDefault();
+        //     evt.stopPropagation();
+        // } catch (ex:any) {
+        //     log (ex.message);
+        // }
     }
 
     function onTouchEnd(evt: TouchEvent): void {
+        log('onTouchEnd');
         clearLongPressTimer();
 
         if (unref(isOpen)) {
@@ -208,6 +285,10 @@
         isDragging.value = false;
 
         const deltaX = startX.value - currentX.value;
+        log('startX.value: ' + startX.value);
+        log('currentX.value: ' + currentX.value);
+        log('deltaX: ' + deltaX);
+
 
         if (unref(isTap) && !unref(touchedInteractive) && !unref(didLongPress)) {
             emit('tap');
@@ -225,13 +306,13 @@
 
         isOpen.value = deltaX > 45;
 
-        log('onTouchEnd: evt.preventDefault();');
-        try {
-            evt.preventDefault();
-            evt.stopPropagation();
-        } catch (ex:any) {
-            log (ex.message);
-        }
+        // log('onTouchEnd: evt.preventDefault();');
+        // try {
+        //     evt.preventDefault();
+        //     evt.stopPropagation();
+        // } catch (ex:any) {
+        //     log (ex.message);
+        // }
 
     }
 
