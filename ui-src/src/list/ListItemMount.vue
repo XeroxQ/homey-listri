@@ -142,7 +142,7 @@
             emit('longPress');
         }, longPressDuration);
         
-        // console.log('onTouchStart: evt.preventDefault();');
+        log('onTouchStart: evt.preventDefault();');
         try {
             evt.preventDefault();
             evt.stopPropagation();
@@ -174,6 +174,14 @@
 
         if (unref(direction) === 'horizontal' && evt.cancelable) {
             evt.preventDefault();
+        }
+        
+        log('onTouchMove: evt.preventDefault();');
+        try {
+            evt.preventDefault();
+            evt.stopPropagation();
+        } catch (ex:any) {
+            log (ex.message);
         }
     }
 
@@ -215,6 +223,15 @@
         }
 
         isOpen.value = deltaX > 45;
+
+        log('onTouchEnd: evt.preventDefault();');
+        try {
+            evt.preventDefault();
+            evt.stopPropagation();
+        } catch (ex:any) {
+            log (ex.message);
+        }
+
     }
 
     watch(isOpen, (open, _, onCleanup) => {
