@@ -1,5 +1,5 @@
 <template>
-    <FluxPane style="max-height: calc(100dvh - 30px); width: calc(100dvw - 30px); overflow-x: hidden">
+    <FluxPane style="max-height: calc(100dvh - 30px); width: calc(100dvw - 30px); overflow-x: hidden" id="fluxPaneListForm">
         <FluxPaneHeader :title="title"/>
 
         <FluxPaneBody>

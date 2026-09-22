@@ -180,7 +180,7 @@
             // log('heightlistAdd: ' + heightlistAdd);
             // log('heighteditingItem: ' + heighteditingItem);
 
-            const listOverlay = document.querySelector('#fluxOverlay')!;// as HTMLElement;
+            const listOverlay = document.querySelector('#fluxPaneListForm')!;// as HTMLElement;
             const {height: heightlistOverlay } = listOverlay.getBoundingClientRect();
             
             log('height: ' + height);
