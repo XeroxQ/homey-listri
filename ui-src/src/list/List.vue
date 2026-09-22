@@ -173,7 +173,7 @@
         const fluxPaneListForm = document.querySelector('#fluxPaneListForm')!;// as HTMLElement;
         const scrollHeightFluxPaneListForm = fluxPaneListForm?.scrollHeight;
 
-        let newHeight = Math.max(scrollHeightFluxPaneListForm ? (scrollHeightFluxPaneListForm+30) : 450, height);
+        let newHeight = Math.max(scrollHeightFluxPaneListForm ? (scrollHeightFluxPaneListForm+34) : 454, height);
         
         if(!dynamicHeight) newHeight = Math.max(newHeight, fixedHeight);
        
