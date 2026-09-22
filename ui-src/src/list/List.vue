@@ -180,12 +180,13 @@
             // log('heightlistAdd: ' + heightlistAdd);
             // log('heighteditingItem: ' + heighteditingItem);
 
-            const listOverlay = document.querySelector('#fluxOverlay')! as HTMLElement;
+            const listOverlay = document.querySelector('#fluxOverlay')!;// as HTMLElement;
             const {height: heightlistOverlay } = listOverlay.getBoundingClientRect();
             
             log('height: ' + height);
             log('heightlistOverlay: ' + heightlistOverlay);
-            log('listOverlay offsetHeight: ' + listOverlay.offsetHeight);
+            //log('listOverlay offsetHeight: ' + listOverlay.offsetHeight);
+            log('listOverlay scrollHeight: ' + listOverlay.scrollHeight);
 
             Homey.setHeight(unref(addingType) || unref(editingItem) ? Math.max(440, height) : height);
         } catch (ex:any) {
