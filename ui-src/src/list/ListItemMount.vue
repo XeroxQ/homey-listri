@@ -152,6 +152,7 @@
     }
 
     function onTouchMove(evt: TouchEvent): void {
+        log('onTouchMove');
         if (!unref(isDragging)) {
             return;
         }
