@@ -186,7 +186,7 @@
             log('height: ' + height);
             log('heightlistOverlay: ' + heightlistOverlay);
 
-            Homey.setHeight(unref(addingType) || unref(editingItem) ? Math.max(420, height) : height);
+            Homey.setHeight(unref(addingType) || unref(editingItem) ? Math.max(440, height) : height);
         } catch (ex:any) {
             log(ex.message);
         }
