@@ -36,7 +36,10 @@
     setup>
     import { computed, ref, unref, type VNode, watch } from 'vue';
     import { Icon } from '../components';
+    import useStore from './store';
 
+    const { log } = useStore();
+    
     const emit = defineEmits<{
         readonly longPress: [];
         readonly remove: [];
@@ -140,8 +143,12 @@
         }, longPressDuration);
         
         // console.log('onTouchStart: evt.preventDefault();');
-        // evt.preventDefault();
-        // evt.stopPropagation();
+        try {
+            evt.preventDefault();
+            evt.stopPropagation();
+        } catch (ex:any) {
+            log (ex.message);
+        }
     }
 
     function onTouchMove(evt: TouchEvent): void {

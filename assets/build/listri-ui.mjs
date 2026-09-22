@@ -14199,7 +14199,7 @@ var R6 = /* @__PURE__ */ He(B6, [["__cssModules", _6]]), P6 = /* @__PURE__ */ U(
         return;
       }
       const k = document.querySelector("#app"), { height: S } = k.getBoundingClientRect(), $ = document.querySelector("#fluxPaneListForm")?.scrollHeight;
-      let M = Math.max($ ? $ + 30 : 450, S);
+      let M = Math.max($ ? $ + 34 : 454, S);
       t.dynamicHeight || (M = Math.max(M, t.fixedHeight)), Homey.setHeight(c(g) || c(I) ? M : S);
     }
     return Homey.on("list-items-changed", async ({ id: k, items: S }) => {
