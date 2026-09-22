@@ -174,9 +174,8 @@
         const scrollHeightFluxPaneListForm = fluxPaneListForm?.scrollHeight;
 
         let newHeight = Math.max(scrollHeightFluxPaneListForm ? (scrollHeightFluxPaneListForm+30) : 450, height);
-        log('newHeight:' + newHeight);
-        log('fixedHeight:' + fixedHeight);
-        if(dynamicHeight) newHeight = Math.max(newHeight, fixedHeight);
+        
+        if(!dynamicHeight) newHeight = Math.max(newHeight, fixedHeight);
        
 
         Homey.setHeight(unref(addingType) || unref(editingItem) ? newHeight : height);
