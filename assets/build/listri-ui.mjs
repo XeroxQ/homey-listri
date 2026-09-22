@@ -14192,7 +14192,7 @@ var R6 = /* @__PURE__ */ He(B6, [["__cssModules", _6]]), P6 = /* @__PURE__ */ W(
       }
     }
     async function I() {
-      if (v("dynamicHeightWhileEditing: " + t.dynamicHeightWhileEditing), v("addingType: " + !w), v("editingItem: " + !k), !t.dynamicHeight && (!t.dynamicHeightWhileEditing || !w && !k)) {
+      if (v("dynamicHeightWhileEditing: " + t.dynamicHeightWhileEditing), v("addingType: " + !w.value), v("editingItem: " + !k.value), !t.dynamicHeight && (!t.dynamicHeightWhileEditing || !w.value && !k.value)) {
         Homey.setHeight(Math.max(120, t.fixedHeight));
         return;
       }
