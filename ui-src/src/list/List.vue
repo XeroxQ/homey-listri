@@ -169,29 +169,12 @@
 
         const list = document.querySelector('#app')!;
         const {height} = list.getBoundingClientRect();
-
-        try {
-            // const listAdd = document.querySelector('#addingType')!;
-            // const {height: heightlistAdd } = listAdd.getBoundingClientRect();
-
-            // const listEdit = document.querySelector('#editingItem')!;
-            // const {height: heighteditingItem} = listEdit.getBoundingClientRect();
-            
-            // log('heightlistAdd: ' + heightlistAdd);
-            // log('heighteditingItem: ' + heighteditingItem);
-
-            const listOverlay = document.querySelector('#fluxPaneListForm')!;// as HTMLElement;
-            const heightlistOverlay = listOverlay?.getBoundingClientRect().height;
-            
-            log('height: ' + height);
-            log('heightlistOverlay: ' + heightlistOverlay);
-            //log('listOverlay offsetHeight: ' + listOverlay.offsetHeight);
-            log('listOverlay scrollHeight: ' + listOverlay?.scrollHeight);
-
-            Homey.setHeight(unref(addingType) || unref(editingItem) ? Math.max(440, height) : height);
-        } catch (ex:any) {
-            log(ex.message);
-        }
+       
+        const fluxPaneListForm = document.querySelector('#fluxPaneListForm')!;// as HTMLElement;
+        const scrollHeightFluxPaneListForm = fluxPaneListForm?.scrollHeight;        
+        
+        Homey.setHeight(unref(addingType) || unref(editingItem) ? Math.max(scrollHeightFluxPaneListForm ? (scrollHeightFluxPaneListForm+30) : 450, height) : height);
+        
     }
 
     Homey.on('list-items-changed', async ({id, items}) => {
