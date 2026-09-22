@@ -169,11 +169,16 @@
 
         const list = document.querySelector('#app')!;
         const {height} = list.getBoundingClientRect();
-       
-        const fluxPaneListForm = document.querySelector('#fluxPaneListForm')!;// as HTMLElement;
-        const scrollHeightFluxPaneListForm = fluxPaneListForm?.scrollHeight;        
         
-        Homey.setHeight(unref(addingType) || unref(editingItem) ? (Math.max(scrollHeightFluxPaneListForm ? (scrollHeightFluxPaneListForm+30) : 450, height)) : height);
+        const fluxPaneListForm = document.querySelector('#fluxPaneListForm')!;// as HTMLElement;
+        const scrollHeightFluxPaneListForm = fluxPaneListForm?.scrollHeight;
+
+        let newHeight = Math.max(scrollHeightFluxPaneListForm ? (scrollHeightFluxPaneListForm+30) : 450, height);
+        
+        if(dynamicHeight) newHeight = Math.max(newHeight, fixedHeight);
+       
+
+        Homey.setHeight(unref(addingType) || unref(editingItem) ? newHeight : height);
         
     }
 
