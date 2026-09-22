@@ -162,9 +162,6 @@
     }
 
     async function updateHeight(): Promise<void> {
-        log('dynamicHeightWhileEditing: ' + dynamicHeightWhileEditing);
-        log('addingType: ' + !addingType.value);
-        log('editingItem: ' + !editingItem.value);
         if (!dynamicHeight && (!dynamicHeightWhileEditing || (!addingType.value && !editingItem.value))) {
             Homey.setHeight(Math.max(120, fixedHeight));
             return;
@@ -172,6 +169,8 @@
 
         const list = document.querySelector('#app')!;
         const {height} = list.getBoundingClientRect();
+        
+        log('height: ' + height);
         Homey.setHeight(unref(addingType) || unref(editingItem) ? Math.max(420, height) : height);
     }
 
