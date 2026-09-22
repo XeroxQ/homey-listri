@@ -59,17 +59,15 @@
         </ListItems>
     </Transition>
 
-    <FluxOverlay>
+    <FluxOverlay id="fluxOverlay">
         <ListAdd
             v-if="addingType"
-            id="addingType"
             :device-id="deviceId"
             :type="addingType"
             @close="addingType = null"/>
 
         <ListEdit
             v-else-if="editingItem"
-            id="editingItem"
             :device-id="deviceId"
             :item="editingItem"
             @close="editingItem = null"/>
@@ -173,15 +171,21 @@
         const {height} = list.getBoundingClientRect();
 
         try {
-            const listAdd = document.querySelector('#addingType')!;
-            const {height: heightlistAdd } = listAdd.getBoundingClientRect();
+            // const listAdd = document.querySelector('#addingType')!;
+            // const {height: heightlistAdd } = listAdd.getBoundingClientRect();
 
-            const listEdit = document.querySelector('#editingItem')!;
-            const {height: heighteditingItem} = listEdit.getBoundingClientRect();
+            // const listEdit = document.querySelector('#editingItem')!;
+            // const {height: heighteditingItem} = listEdit.getBoundingClientRect();
+            
+            // log('heightlistAdd: ' + heightlistAdd);
+            // log('heighteditingItem: ' + heighteditingItem);
+
+            const listOverlay = document.querySelector('#fluxOverlay')!;
+            const {height: heightlistOverlay } = listOverlay.getBoundingClientRect();
             
             log('height: ' + height);
-            log('heightlistAdd: ' + heightlistAdd);
-            log('heighteditingItem: ' + heighteditingItem);
+            log('heightlistOverlay: ' + heightlistOverlay);
+
             Homey.setHeight(unref(addingType) || unref(editingItem) ? Math.max(420, height) : height);
         } catch (ex:any) {
             log(ex.message);
