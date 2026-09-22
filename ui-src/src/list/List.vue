@@ -172,17 +172,20 @@
         const list = document.querySelector('#app')!;
         const {height} = list.getBoundingClientRect();
 
-        
-        const listAdd = document.querySelector('#addingType')!;
-        const {height: heightlistAdd } = listAdd.getBoundingClientRect();
+        try {
+            const listAdd = document.querySelector('#addingType')!;
+            const {height: heightlistAdd } = listAdd.getBoundingClientRect();
 
-        const listEdit = document.querySelector('#editingItem')!;
-        const {height: heighteditingItem} = listEdit.getBoundingClientRect();
-        
-        log('height: ' + height);
-        log('heightlistAdd: ' + heightlistAdd);
-        log('heighteditingItem: ' + heighteditingItem);
-        Homey.setHeight(unref(addingType) || unref(editingItem) ? Math.max(420, height) : height);
+            const listEdit = document.querySelector('#editingItem')!;
+            const {height: heighteditingItem} = listEdit.getBoundingClientRect();
+            
+            log('height: ' + height);
+            log('heightlistAdd: ' + heightlistAdd);
+            log('heighteditingItem: ' + heighteditingItem);
+            Homey.setHeight(unref(addingType) || unref(editingItem) ? Math.max(420, height) : height);
+        } catch (ex:any) {
+            log(ex.message);
+        }
     }
 
     Homey.on('list-items-changed', async ({id, items}) => {
