@@ -162,7 +162,7 @@
     }
 
     async function updateHeight(): Promise<void> {
-        if (!dynamicHeight && (!dynamicHeightWhileEditing || (!addingType.value && !editingItem.value))) {
+        if (!dynamicHeight && (!dynamicHeightWhileEditing || (!unref(addingType) && !unref(editingItem)))) {
             Homey.setHeight(Math.max(120, fixedHeight));
             return;
         }
