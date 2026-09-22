@@ -181,12 +181,12 @@
             // log('heighteditingItem: ' + heighteditingItem);
 
             const listOverlay = document.querySelector('#fluxPaneListForm')!;// as HTMLElement;
-            const {height: heightlistOverlay } = listOverlay.getBoundingClientRect();
+            const {height: heightlistOverlay } = listOverlay?.getBoundingClientRect();
             
             log('height: ' + height);
             log('heightlistOverlay: ' + heightlistOverlay);
             //log('listOverlay offsetHeight: ' + listOverlay.offsetHeight);
-            log('listOverlay scrollHeight: ' + listOverlay.scrollHeight);
+            log('listOverlay scrollHeight: ' + listOverlay?.scrollHeight);
 
             Homey.setHeight(unref(addingType) || unref(editingItem) ? Math.max(440, height) : height);
         } catch (ex:any) {

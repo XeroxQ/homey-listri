@@ -12999,7 +12999,10 @@ var uf = Ek("list", () => {
     async function S() {
       n("save");
     }
-    return (H, I) => (v(), _(c(qr), { style: { "max-height": "calc(100dvh - 30px)", width: "calc(100dvw - 30px)", "overflow-x": "hidden" } }, {
+    return (H, I) => (v(), _(c(qr), {
+      style: { "max-height": "calc(100dvh - 30px)", width: "calc(100dvw - 30px)", "overflow-x": "hidden" },
+      id: "fluxPaneListForm"
+    }, {
       default: U(() => [
         B(c(Zr), { title: t.title }, null, 8, ["title"]),
         B(c(hi), null, {
@@ -14198,7 +14201,7 @@ var R6 = /* @__PURE__ */ He(B6, [["__cssModules", _6]]), P6 = /* @__PURE__ */ W(
       }
       const C = document.querySelector("#app"), { height: z } = C.getBoundingClientRect();
       try {
-        const A = document.querySelector("#fluxOverlay"), { height: L } = A.getBoundingClientRect();
+        const A = document.querySelector("#fluxPaneListForm"), { height: L } = A.getBoundingClientRect();
         g("height: " + z), g("heightlistOverlay: " + L), g("listOverlay scrollHeight: " + A.scrollHeight), Homey.setHeight(c(w) || c(k) ? Math.max(440, z) : z);
       } catch (A) {
         g(A.message);
