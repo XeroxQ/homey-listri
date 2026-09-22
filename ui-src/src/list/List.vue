@@ -173,7 +173,7 @@
         const fluxPaneListForm = document.querySelector('#fluxPaneListForm')!;// as HTMLElement;
         const scrollHeightFluxPaneListForm = fluxPaneListForm?.scrollHeight;        
         
-        Homey.setHeight(unref(addingType) || unref(editingItem) ? Math.max(scrollHeightFluxPaneListForm ? (scrollHeightFluxPaneListForm+30) : 450, height) : height);
+        Homey.setHeight(unref(addingType) || unref(editingItem) ? (Math.max(scrollHeightFluxPaneListForm ? (scrollHeightFluxPaneListForm+30) : 450, height)) : height);
         
     }
 
